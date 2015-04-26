@@ -29,6 +29,8 @@ run_analysis<-function(){
      library(plyr)
      extractedData[[2]]<-factor(extractedData[[2]], levels = c(1,2,3,4,5,6), 
                                 labels=activity_labels$activity_labels)
+     
+     ## Create tidy data with the average of each variable for each activity and each subject
      tidyData<-ddply(extractedData, .(subject,label),numcolwise(mean))
      
      ##Write tidyData to a txt file
